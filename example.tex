@@ -1,0 +1,54 @@
+%\documentclass{imposter}
+\documentclass[landscape]{imposter}
+
+\usepackage{layout}
+
+\title{Some sort of ocean model with a long name}
+\author{David A. Ham}
+\department{Department of Earth Science and Engineering}
+\institution{Imperial College London}
+\email{David@ham.dropbear.id.au}
+\url{http://amcg.ese.ic.ac.uk}
+
+%% Primary university logo.
+\logo{imperial.eps}
+% Secondary logos (not supported in all poster styles)
+%\logoa{AMCG.eps}
+
+%% Options to set colors of multiple poster features.
+%\titlecolor{named}{Blue}
+%\postercolor{named}{Red}
+%\pagecolor{green}
+
+%% Overall poster themes.
+%\posterstyle{tudelftstyle} % Official TU House style.
+%\posterstyle{tudelftlandscape} % This requires the 
+                                % landscape documentclass option
+\posterstyle[narrow]{amcgstyle} % Amcg poster with amcg logo in blue block
+% at bottom.
+%\posterstyle{amcgstyle} % Amcg poster with amcg logo in blue block at bottom.
+
+% Use group with amcgstyle to specify a different group name.
+%\group{}
+% Use group with amcgstyle to specify a project name other than Imperial
+% College Ocean Model.
+%\project{}
+
+% This defines the command \showgrid. Use this to get a background grid to
+% your poster text area. This helps when positioning poster contents with
+% \rput.
+\newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=20pt}
+
+% This sets up boxes to have nice rounded corners and somewhat thicker lines
+% than the default.
+\psset{linecolor=amcgdarkblue,linewidth=.2,cornersize=absolute,linearc=1.0,framesep=0.5}
+
+
+\begin{document}
+
+\section{Wibble foo.}
+
+Some random blurb. 
+\IMposterargs
+
+\end{document}

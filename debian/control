@@ -1,0 +1,14 @@
+Source: latex-imposter
+Section: tex
+Priority: extra
+Maintainer: David Ham <David.Ham@imperial.ac.uk>
+Build-Depends: debhelper (>= 5)
+Standards-Version: 3.7.3
+
+Package: latex-imposter
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, texlive-pstricks
+Recommends: 
+Description: An Imperial College London posterstyle for latex
+ This package provides an Imperial College London style for developing 
+ posters using LaTeX.

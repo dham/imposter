@@ -1,0 +1,17 @@
+latex-imposter (1.2) unstable; urgency=low
+
+  * Provided the Grantham Institute logo (Grantham_cmyk.eps)
+
+ -- David Ham <david.ham@imperial.ac.uk>  Wed, 08 Sep 2010 10:53:20 +0100
+
+latex-imposter (1.1) unstable; urgency=low
+
+  * New formats, bug fixes and lots of other improvements.
+
+ -- David Ham <David.Ham@imperial.ac.uk>  Thu, 22 Apr 2010 15:07:41 +0100
+
+latex-imposter (1.0) unstable; urgency=low
+
+  * Initial Release.
+
+ -- David Ham <David.Ham@imperial.ac.uk>  Mon, 03 Aug 2008 13:54:06 +0100
