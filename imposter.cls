@@ -48,7 +48,7 @@
 \ProcessOptions\relax
 
 \RequirePackage{a0size}
-\RequirePackage{color}
+\RequirePackage[dvipsnames]{xcolor}
 \RequirePackage{pstricks}
 \RequirePackage{graphicx}
 \RequirePackage{ifthen}
@@ -79,6 +79,8 @@
 \newcommand{\veryHuge}{\fontsize{107}{134}\selectfont}
 \newcommand{\VeryHuge}{\fontsize{107}{134}\selectfont}
 \newcommand{\VERYHuge}{\fontsize{107}{134}\selectfont}
+
+\definecolor{pitchblack}{cmyk}{1,1,1,1}
 
 \setlength\smallskipamount{6pt plus 2pt minus 2pt}
 \setlength\medskipamount{12pt plus 4pt minus 4pt}
@@ -208,13 +210,18 @@
       {\ifthenelse{\equal{#2}{amcgstyle}}
         {\renewcommand{\IMposterstyle}{\amcgstyleposter}
           \amcgstyleposterprehook}
-        {\ifthenelse{\equal{#2}{granthamstyle}}
-          {\renewcommand{\IMposterstyle}{\granthamstyleposter}
-            \granthamstyleposterprehook}
-          {\ifthenelse{\equal{#2}{tudelftlandscape}}
-            {\renewcommand{\IMposterstyle}{\tudelftlandscapestyleposter}}
-            {\ClassError{imposter}{#2 is not a valid poster style.}
-              {Valid poster styles are block and housestyle.}
+        {\ifthenelse{\equal{#2}{mpecdtstyle}}
+          {\renewcommand{\IMposterstyle}{\mpecdtstyleposter}
+            \mpecdtstyleposterprehook}
+          {\ifthenelse{\equal{#2}{granthamstyle}}
+            {\renewcommand{\IMposterstyle}{\granthamstyleposter}
+              \granthamstyleposterprehook}
+            {\ifthenelse{\equal{#2}{tudelftlandscape}}
+              {\renewcommand{\IMposterstyle}{\tudelftlandscapestyleposter}}
+              {\ClassError{imposter}{#2 is not a valid poster style.}
+                {Valid poster styles are tudelftstyle, block, icstyle,
+                  amcgstyle, mpecdtstyle.}
+              }
             }
           }
         }
@@ -229,7 +236,7 @@
 % Frame style header.
 \newcommand{\hsframehead}{
  \ifthenelse{\equal{\IMtitlecolor}{}}
-   {\definecolor{titlecolor}{named}{Black}}{}
+   {\definecolor{titlecolor}{named}{pitchblack}}{}
  \ifthenelse{\equal{\IMtitlebackcolor}{}}
    {\definecolor{titlebackcolor}{named}{White}}{}
 
@@ -251,7 +258,7 @@ fillcolor=titlebackcolor, linecolor=titleframecolor]
 % Plain style header
 \newcommand{\hsplainhead}{
   \ifthenelse{\equal{\IMtitlecolor}{}}
-  {\definecolor{titlecolor}{named}{Black}}{}
+  {\definecolor{titlecolor}{named}{pitchblack}}{}
   
   % Title
   \rput(420.5,1132){\parbox{781mm}
@@ -264,9 +271,9 @@ fillcolor=titlebackcolor, linecolor=titleframecolor]
 % Block style header
 \newcommand{\hsblockhead}{
  \ifthenelse{\equal{\IMtitlecolor}{}}
-   {\definecolor{titlecolor}{named}{Black}}{}
+   {\definecolor{titlecolor}{named}{pitchblack}}{}
  \ifthenelse{\equal{\IMtitleframecolor}{}}
-   {\definecolor{titleframecolor}{named}{Black}}{}
+   {\definecolor{titleframecolor}{named}{pitchblack}}{}
 
 % Title block
 \psframe[dimen=inner, fillstyle=solid, fillcolor=titlebackcolor, 
@@ -284,6 +291,11 @@ linecolor=titleframecolor](10,1039)(831,1179)
 
 \newcommand{\tudelftstyleposter}
 {
+ \ifthenelse{\equal{\IMtitlecolor}{}}
+   {\definecolor{titlecolor}{named}{pitchblack}}{}
+ \ifthenelse{\equal{\IMtitleframecolor}{}}
+   {\definecolor{titleframecolor}{named}{pitchblack}}{}
+
 \ifthenelse{\equal{\IMposterargs}{block}}{\hsblockhead}{
 \ifthenelse{\equal{\IMposterargs}{plain}}{\hsplainhead}{
 \hsframehead}}
@@ -299,8 +311,8 @@ linecolor=titleframecolor](10,1039)(831,1179)
 \psframe[dimen=inner, fillstyle=solid,fillcolor=postercolor, linecolor=postercolor]
 (0,27)(1189,59)
 
-% Black line
-\psline[linewidth=1, linecolor=black](0,145)(1189,145)
+% pitchblack line
+\psline[linewidth=1, linecolor=pitchblack](0,145)(1189,145)
 
 % University logo
 \ifthenelse{\equal{\IMlogo}{}}{}{\rput(622,102)
@@ -327,9 +339,9 @@ linecolor=titleframecolor](10,1039)(831,1179)
 \newcommand{\blockstyleposter}
 {
  \ifthenelse{\equal{\IMtitlecolor}{}}
-   {\definecolor{titlecolor}{named}{Black}}{}
+   {\definecolor{titlecolor}{named}{pitchblack}}{}
  \ifthenelse{\equal{\IMtitleframecolor}{}}
-   {\definecolor{titleframecolor}{named}{Black}}{}
+   {\definecolor{titleframecolor}{named}{pitchblack}}{}
 
 % Title block
 \psframe[dimen=inner, fillstyle=solid, fillcolor=titlebackcolor,
@@ -624,6 +636,144 @@ linecolor=titleframecolor]
   }
 }
 }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\mpecdtstyleposterprehook}
+{
+  \ifthenelse{\equal{\IMtitlecolor}{}}
+  {\definecolor{titlecolor}{rgb}{.3,.3,.3}}{}
+  \ifthenelse{\equal{\IMtitleframecolor}{}}
+  {\definecolor{titleframecolor}{cmyk}{0,.26,.82,.36}}{}
+  \definecolor{titlebackcolor}{cmyk}{0,0,0,0}
+  \ifthenelse{\equal{\IMpostercolor}{}}
+  {\definecolor{postercolor}{rgb}{.3,.3,.3}}{}
+}
+
+\newcommand{\mpecdtstyleposter}
+{
+  \newcounter{icvpos}
+  \setcounter{icvpos}{0}
+  \newcounter{icvoffset}
+  \setcounter{icvoffset}{0}
+  
+  % Logos
+  
+  % Storage box for logos.
+  \newsavebox{\logobox}
+  \newsavebox{\logoabox}
+  
+  % Default logo size.
+  % 
+  \ifthenelse{\equal{\IMlogodim}{[]}}{\renewcommand{\IMlogodim}{[height=40mm]}}{}
+  \savebox{\logobox}{\ifthenelse{\equal{\IMlogo}{}}{}{
+      \expandafter\includegraphics\IMlogodim{\IMlogo}}}
+%  \rput[tl](20,1169){\usebox{\logobox}}
+  
+  \ifthenelse{\equal{\IMlogoadim}{[]}}{\renewcommand{\IMlogoadim}{[height=40mm]}}{}
+  \savebox{\logoabox}{\ifthenelse{\equal{\IMlogoa}{}}{}{
+      \expandafter\includegraphics\IMlogoadim{\IMlogoa}}}
+%   \rput[tr](821,1000){\usebox{\logobox}}
+%   \rput[tr](821,1000){\expandafter\includegraphics\IMlogodim{\IMlogo}}
+  
+  \newlength{\iclogolen}
+  \newlength{\iclogoalen}
+  \newlength{\iclogowidth}
+  \newlength{\iclogoheight}
+  
+  \setlength{\iclogolen}{\widthof{\usebox{\logobox}}}
+  \setlength{\iclogoalen}{\widthof{\usebox{\logoabox}}}
+  \ifthenelse{\lengthtest{\iclogolen > \iclogoalen}}
+  {
+    \setlength{\iclogowidth}{\iclogolen}
+  }{
+    \setlength{\iclogowidth}{\iclogoalen}
+  }
+  
+  \setlength{\iclogolen}{\heightof{\usebox{\logobox}}}
+  \setlength{\iclogoalen}{\heightof{\usebox{\logoabox}}}
+  \ifthenelse{\lengthtest{\iclogolen > \iclogoalen}}
+  {
+    \setlength{\iclogoheight}{\iclogolen}
+  }{
+    \setlength{\iclogoheight}{\iclogoalen}
+  }
+  
+  \newlength{\icheadingwidth}
+  \ifthenelse{\lengthtest{\textwidth > \textheight}}{
+    % Landscape
+    \setlength{\icheadingwidth}{1169mm-40mm-\iclogowidth*2}
+  }{
+    \setlength{\icheadingwidth}{821mm-40mm-\iclogowidth*2}
+  }
+  \newsavebox{\icheadingbox}
+  
+  \savebox{\icheadingbox}{\parbox{\icheadingwidth}{
+      \centering
+      % Title
+      {\huge\bfseries\color{titlecolor}\IMtitle}
+      % Author name
+      \ifthenelse{\equal{\IMauthor}{}}{}
+      {\\\large\color{titlecolor}\IMauthor}
+      % Department or research centre name
+      \ifthenelse{\equal{\IMdepartment}{}}{}
+      {\\\large\color{titlecolor}\IMdepartment}
+      % Institution name
+      \ifthenelse{\equal{\IMinstitution}{}}{}
+      {\\\large\color{titlecolor}\centering\IMinstitution}
+    }}
+  
+ % Title block
+  \ifportrait{\rput[t](420.5,1179){\parbox{841mm}{
+      \centering
+      \psframebox[framesep=1cm,linecolor=titleframecolor]{
+      \parbox{\iclogowidth}{\centering\usebox{\logobox}}
+      \usebox{\icheadingbox}
+      \parbox{\iclogowidth}{\centering\usebox{\logoabox}}
+    }\\
+    \vspace{1cm}
+    \usebox{\posterbox}      
+  }}}\else{\rput[t](594.5,831){\parbox{1189mm}{
+    \centering
+    \psframebox[framesep=1cm,linecolor=titleframecolor]{
+      \parbox{\iclogowidth}{\centering\usebox{\logobox}}
+      \usebox{\icheadingbox}
+      \parbox{\iclogowidth}{\centering\usebox{\logoabox}}
+    }\\
+    \vspace{1cm}
+    \usebox{\posterbox}}}}\fi
+
+%  % The main text body 	 
+%  \rput[tl](10,1065){\usebox{\posterbox}}
+
+%  % The main text body
+%  \addtocounter{icvpos}{-10}
+%  \rput[tl](10,\theicvpos){
+
+% Author address
+%\rput(420.5,13){\parbox{821mm}{\centering\small\IMaddress}}
+% Title band at the bottom
+\ifportrait{
+  \psframe[dimen=inner, fillstyle=solid,fillcolor=pitchblack, linecolor=pitchblack,linewidth=.2,cornersize=absolute,linearc=0.0,framesep=0.5]
+  (0,0)(841,100)
+  \rput[c](100,50){\includegraphics[height=50mm]{epsrc.eps}}
+  \rput[c](250,50){\includegraphics[height=90mm]{CDT.eps}}
+  \rput[c](620,50){\includegraphics[height=30mm]{imperial_white_on_clear_background_logo.eps}}
+  \rput[c](770,50){\includegraphics[height=30mm]{reading_white_on_clear_background_logo.eps}}
+  \rput[c](420.5,48){\centering\includegraphics[height=100mm]{MPE-logo.eps}}
+  %\rput[c](800,66){\centering\color{white}\bfseries\IMaddress}
+  %\rput[c](800,33){\centering\color{white}\bfseries\IMurl}    
+}\else{
+  \psframe[dimen=inner, fillstyle=solid,fillcolor=pitchblack, linecolor=pitchblack,linewidth=.2,cornersize=absolute,linearc=0.0,framesep=0.5]
+  (0,0)(1189,100)
+  \rput[c](250,50){\includegraphics[height=50mm]{epsrc.eps}}
+  \rput[c](400,50){\includegraphics[height=90mm]{CDT.eps}}
+  \rput[c](800,50){\includegraphics[height=30mm]{imperial_white_on_clear_background_logo.eps}}
+  \rput[c](950,50){\includegraphics[height=30mm]{reading_white_on_clear_background_logo.eps}}
+  \rput[c](594.5,48){\centering\includegraphics[height=100mm]{MPE-logo.eps}}
+}\fi
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\granthamstyleposterprehook}
@@ -793,9 +943,9 @@ linecolor=titleframecolor]
 \newcommand{\tudelftlandscapestyleposter}
 {
  \ifthenelse{\equal{\IMtitlecolor}{}}
-   {\definecolor{titlecolor}{named}{Black}}{}
+   {\definecolor{titlecolor}{named}{pitchblack}}{}
  \ifthenelse{\equal{\IMtitleframecolor}{}}
-   {\definecolor{titleframecolor}{named}{Black}}{}
+   {\definecolor{titleframecolor}{named}{pitchblack}}{}
 
 % Title block
 \rput(594.5,770){\parbox{664mm}

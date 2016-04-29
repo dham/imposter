@@ -22,7 +22,7 @@ LOCALDOC=$(INSTALLDIR)/doc
 LATEXLOC=$(INSTALLDIR)/texmf
 PACKAGEFILES=$(CLASS).cls imperial.eps imperial_white_on_clear_background_logo.eps AMCG.eps a0size.sty nerclogo.eps
 #FONTFILES=
-DOCFILES=README Makefile example.tex
+DOCFILES=README.md Makefile example.tex
 PSFILES=example.ps example.pdf 
 TARGETS=$(CLASS).tgz $(CLASS).zip ChangeLog
 

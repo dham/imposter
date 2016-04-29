@@ -1,0 +1,60 @@
+\documentclass{imposter}
+%\documentclass[landscape]{imposter}
+
+\usepackage{layout}
+
+\title{Some sort of ocean model with a long name}
+\author{David A. Ham}
+\department{Department of Mathematics}
+\institution{Imperial College London}
+\email{David@ham.dropbear.id.au}
+\url{http://amcg.ese.ic.ac.uk}
+
+%% Primary university logo.
+%\logo{imperial.eps}
+% Secondary logos (not supported in all poster styles)
+%\logoa{AMCG.eps}
+
+%% Options to set colors of multiple poster features.
+%\titlecolor{named}{Blue}
+%\postercolor{named}{Red}
+%\pagecolor{green}
+
+\posterstyle{mpecdtstyle}
+
+% This defines the command \showgrid. Use this to get a background grid to
+% your poster text area. This helps when positioning poster contents with
+% \rput.
+\newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=20pt}
+
+% This sets up boxes to have nice rounded corners and somewhat thicker lines
+% than the default.
+\psset{linecolor=postercolor,linewidth=.2,cornersize=absolute,linearc=0.5,framesep=0.5}
+
+\begin{document}
+\begin{pspicture}(0,0)(82,96)
+%\showgrid
+  \rput[tl](0,96){\psframebox{\begin{minipage}{37cm}
+        \section{Finite elements for geophysics}
+
+        Geophysical flows are are characterised by, among other features,
+        high aspect ratios, geostrophic balance and the importance of waves
+        as information vectors. We have previously shown that $\textsf{P1}_{\textsf{DG}}$-$\textsf{P2}$
+        element, which we designed for geophysical applications, has:
+        \begin{itemize}
+        \item \textbf{exactly stable geostrophically balanced states.}
+        \item \textbf{no spurious pressure modes.}
+        \end{itemize}
+        Here we demonstrate another geophysically desirable property:
+        \begin{itemize}
+        \item \textbf{optimally convergent inertia-gravity wave solutions.}
+        \end{itemize}
+
+        \end{minipage}
+      }
+    }
+
+\end{pspicture}
+
+
+\end{document}
