@@ -1,4 +1,4 @@
-# Makefile for installing the vlmbrief package. Some LaTeX commands are also
+# Makefile for installing the imposter package. Some LaTeX commands are also
 # provided for your convenience.
 
 %.dvi: %.tex 
@@ -20,7 +20,10 @@ CLASS=imposter
 INSTALLDIR?=/usr/local/share
 LOCALDOC=$(INSTALLDIR)/doc
 LATEXLOC=$(INSTALLDIR)/texmf
-PACKAGEFILES=$(CLASS).cls imperial.eps imperial_white_on_clear_background_logo.eps AMCG.eps a0size.sty nerclogo.eps
+PACKAGEFILES=$(CLASS).cls imperial.eps \
+    imperial_white_on_clear_background_logo.eps AMCG.eps a0size.sty \
+    nerclogo.eps epsrc.eps reading_white_on_clear_background_logo.eps CDT.eps MPE-logo.eps
+
 #FONTFILES=
 DOCFILES=README.md Makefile example.tex
 PSFILES=example.ps example.pdf 
