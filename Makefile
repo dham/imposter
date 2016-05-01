@@ -16,10 +16,10 @@ example.dvi: imposter.cls
 
 #Name of the package
 CLASS=imposter
-# Install location defaults to usr/local
-INSTALLDIR?=/usr/local/share
+# Install location defaults to the user's own texmf
+INSTALLDIR?=$(shell kpsewhich -var-value TEXMFHOME)
 LOCALDOC=$(INSTALLDIR)/doc
-LATEXLOC=$(INSTALLDIR)/texmf
+LATEXLOC=$(INSTALLDIR)
 PACKAGEFILES=$(CLASS).cls imperial.eps \
     imperial_white_on_clear_background_logo.eps AMCG.eps a0size.sty \
     nerclogo.eps epsrc.eps reading_white_on_clear_background_logo.eps CDT.eps MPE-logo.eps

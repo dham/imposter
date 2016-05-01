@@ -49,7 +49,7 @@ install: build
 	dh_installdirs
 
 	# Add here commands to install the package into debian/latex-imposter.
-	$(MAKE) INSTALLDIR=$(CURDIR)/debian/latex-imposter/usr/share install
+	$(MAKE) INSTALLDIR=$(CURDIR)/debian/latex-imposter/usr/share/texmf install
 
 binary-arch: 
 # Do nothing

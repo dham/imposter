@@ -194,6 +194,11 @@
 \providecommand{\logob}[1]{#1}
 \renewcommand{\logob}[1]{\renewcommand{\IMlogob}{#1}}
 
+% This defines the command \showgrid. Use this to get a background grid to
+% your poster text area. This helps when positioning poster contents with
+% \rput.
+\newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=20pt}
+
 
 % Select your poster style.
 \newcommand{\IMposterstyle}{\tudelftstyleposter}
