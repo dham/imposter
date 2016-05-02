@@ -25,7 +25,7 @@ PACKAGEFILES=$(CLASS).cls imperial.eps \
     nerclogo.eps epsrc.eps reading_white_on_clear_background_logo.eps CDT.eps MPE-logo.eps
 
 #FONTFILES=
-DOCFILES=README.md Makefile example.tex
+DOCFILES=README.md Makefile example.tex example_mpecdt.tex
 PSFILES=example.ps example.pdf 
 TARGETS=$(CLASS).tgz $(CLASS).zip ChangeLog
 

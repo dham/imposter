@@ -199,6 +199,23 @@
 % \rput.
 \newpsobject{showgrid}{psgrid}{subgriddiv=1,griddots=10,gridlabels=20pt}
 
+% Content boxes.
+\providecommand{\columnbox}[1]{}
+\providecommand{\leftbox}[2]{}
+\providecommand{\rightbox}[2]{}
+\providecommand{\centrebox}[2]{}
+
+\ifthenelse{\lengthtest{\textwidth > \textheight}}{
+  % Landscape
+  \renewcommand{\columnbox}[1]{\psframebox{\begin{minipage}{36.6cm}#1\end{minipage}}}
+  \renewcommand{\leftbox}[2]{{\rput[tl](0,#1){\columnbox{#2}}}}
+  \renewcommand{\rightbox}[2]{{\rput[tr](116.9,#1){\columnbox{#2}}}}
+  \renewcommand{\centrebox}[2]{{\rput[tl](39.5,#1){\columnbox{#2}}}}
+}{
+  \renewcommand{\columnbox}[1]{\psframebox{\begin{minipage}{38.9cm}#1\end{minipage}}}
+  \renewcommand{\leftbox}[2]{{\rput[tl](0,#1){\columnbox{#2}}}}
+  \renewcommand{\rightbox}[2]{{\rput[tr](82.1,#1){\columnbox{#2}}}}
+}
 
 % Select your poster style.
 \newcommand{\IMposterstyle}{\tudelftstyleposter}
@@ -691,6 +708,7 @@ linecolor=titleframecolor]
   \ifthenelse{\lengthtest{\iclogolen > \iclogoalen}}
   {
     \setlength{\iclogowidth}{\iclogolen}
+
   }{
     \setlength{\iclogowidth}{\iclogoalen}
   }
@@ -996,10 +1014,10 @@ linecolor=titleframecolor]
 \AtBeginDocument{
   \ifportrait\special{papersize=841mm,1189mm}\else\special{papersize=1189mm,841mm}\fi
   \pagestyle{empty}
-  \begin{lrbox}{\posterbox}\ifportrait\begin{minipage}{821mm}\else\begin{minipage}{1169mm}\fi}
+  \begin{lrbox}{\posterbox}\ifportrait\begin{minipage}{821mm}\begin{pspicture}(0,0)(82.4,96)\else\begin{minipage}{1169mm}\begin{pspicture}(0,0)(117.2,61)\fi}
 
 \AtEndDocument{
-  \end{minipage}\end{lrbox}
+  \end{pspicture}\end{minipage}\end{lrbox}
 \noindent\ifportrait\begin{pspicture}(0,0)(84.1,118.9)\else\begin{pspicture}(0,0)(118.9,84.1)\fi
 \psset{unit=.1cm, linecolor=postercolor}
 \IMposterstyle
