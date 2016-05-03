@@ -39,10 +39,12 @@
         then the template can be copied to the current directory as follows:
 
         \begin{description}
-        \item[Ubuntu (installation using apt-get)] \texttt{...}
+        \item[Ubuntu (installation using apt-get)] \mbox{}\\
+            \texttt{\small cp /usr/share/texmf/doc/imposter/example\_mpecdt.tex .}          
+
         \item[Other Mac or Linux systems] \mbox{}\\
             \texttt{\small cp \$(kpsewhich --var-value
-              TEXMFHOME)/doc/imposter/example.tex .}
+              TEXMFHOME)/doc/imposter/example\_mpecdt.tex .}
         \end{description}
         Don't forget the final full stop when copying!
         \subsection{Portrait or landscape}
@@ -56,7 +58,7 @@
 
         \texttt{\textbackslash documentclass[landscape]\{imposter\}}
     }
-  \leftbox{62.8}{
+  \leftbox{59}{
       \section{Positioning boxes}
       \LaTeX\ is in many respects not the ideal platform for
       posters. Posters are a visual medium in which the author will want to

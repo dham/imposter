@@ -2,8 +2,8 @@
 %% This is file `imposter.cls'
 %% 
 %% Copyright (C) 1997-2004 Gerlinde Kettl and Matthias Weiser
-%%               2005 Delft University of Technology, David Ham
-%%               2007 Imperial College London, David Ham
+%%               2005 Delft University of Technology, David A. Ham
+%%               2007-2016 Imperial College London, David A. Ham
 %%
 %% It may be distributed and/or modified under the
 %% conditions of the LaTeX Project Public License, either version 1.2
@@ -16,7 +16,7 @@
 %% Problems, bugs and comments to 
 %% David.Ham@imperial.ac.uk
 %% 
-\ProvidesClass{imposter}[2007/09/04 v0.1 Improved poster class]
+\ProvidesClass{imposter}[2007/09/04 v1.3 Improved poster class]
 \NeedsTeXFormat{LaTeX2e}[1995/06/01]
 \LoadClass{article}
 
