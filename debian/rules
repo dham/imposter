@@ -26,8 +26,7 @@ build-stamp: configure-stamp
 	dh_testdir
 
 	# Add here commands to compile the package.
-	# No compilation needed.
-	#$(MAKE)
+	$(MAKE) example_mpecdt.pdf
 	#docbook-to-man debian/prosper-imperial.sgml > prosper-imperial.1
 
 	touch $@
@@ -49,7 +48,7 @@ install: build
 	dh_installdirs
 
 	# Add here commands to install the package into debian/latex-imposter.
-	$(MAKE) INSTALLDIR=$(CURDIR)/debian/latex-imposter/usr/share install
+	$(MAKE) INSTALLDIR=$(CURDIR)/debian/latex-imposter/usr/share/texmf install
 
 binary-arch: 
 # Do nothing
