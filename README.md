@@ -33,7 +33,7 @@ provided on the example poster. On Ubuntu this can be found at:
 while on other systems it will be found in the imposter source
 directory, and at:
 
-   $(kpsewhich -var-value TEXMFHOME)/doc/latex/imposter/example_mpecdt.pdf
+    $(kpsewhich -var-value TEXMFHOME)/doc/latex/imposter/example_mpecdt.pdf
 
 Use from example.tex as a template and make changes as appropriate. ;)
 
