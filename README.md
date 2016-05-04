@@ -1,33 +1,46 @@
-imposter an improved version of the a0poster class.
-====================================================
+imposter an improved version of the a0poster class from Imperial College London
+===============================================================================
 
-This is a customised version of the a0poster class originally written
+This is a heavily modified version of the a0poster class originally written
 by Gerlinde Kettl and Matthias Weiser. 
 
 INSTALLING
 ----------
 
-On a *nix system, you ought to be able to simply type "make install" as
-root. The Makefile will install the files in the local LaTeX tree and
-tell LaTeX that they are there. 
+On an Ubuntu (or closely related) system, you can directly install the
+latex-imposter package:
 
-Alternatively, as a normal user you should be able to type "make
-install INSTALLDIR=~" and the files will be installed a texmf
-directory in your home directory and latex will know how to find them.
+    sudo apt-add-repository ppa:david-ham
+    sudo apt-get update
+    sudo apt-get install latex-imposter
 
-If this fails, or if you do not run a Unix-like system, documentation
-on how to install the files can be found at:
-http://www.tex.ac.uk/cgi-bin/texfaq2html?label=instpackages
+On other Unix-like systems (including other Linux distributions and
+Mac), installation from the git repository should be straightforward:
 
-PRODUCING A POSTER
-------------------
+    git clone https://github.com/dham/imposter.git
+    cd imposter
+    make install
+
+
+DOCUMENTATION AND PRODUCING POSTERS
+-----------------------------------
+
+Important information on producing posters with the imposter is
+provided on the example poster. On Ubuntu this can be found at:
+
+    /usr/share/texmf/doc/latex/imposter/example_mpecdt.pdf
+
+while on other systems it will be found in the imposter source
+directory, and at:
+
+   $(kpsewhich -var-value TEXMFHOME)/doc/latex/imposter/example_mpecdt.pdf
 
 Use from example.tex as a template and make changes as appropriate. ;)
 
 KNOWN ISSUES
 ------------
 
-* You will need to produce a pdf (for example with ps2pdf). The dvi
+* You will need to produce a pdf (for example with dvipdf). The dvi
   and postscript versions will be mangled.
 
 * Because the package uses pstricks, pdflatex won't work.
@@ -44,17 +57,6 @@ need to lay out the main \posterbox somewhere.
 
 To enable the use of your poster style you will need to add a new
 \ifthenelse case to the definition of the \posterstyle command.
-
-FILES
------
-
-README (this file)
-Makefile (makefile defining installation rules and some LaTeX rules)
-example.tex (example poster)
-imposter.cls (the class file itself)
-a0size (package \inputed by a0poster.cls)
-imperial.eps (Imperial College Logo)
-delfin_colour.eps (Delfin logo)
 
 BUGS
 ----

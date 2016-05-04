@@ -25,7 +25,7 @@ PACKAGEFILES=$(CLASS).cls imperial.eps \
     nerclogo.eps epsrc.eps reading_white_on_clear_background_logo.eps CDT.eps MPE-logo.eps
 
 #FONTFILES=
-DOCFILES=README.md Makefile example.tex example_mpecdt.tex
+DOCFILES=README.md Makefile example.tex example_mpecdt.tex example_mpecdt.pdf
 PSFILES=example.ps example.pdf 
 TARGETS=$(CLASS).tgz $(CLASS).zip ChangeLog
 
@@ -36,10 +36,10 @@ install:
 #ought to be safe.
 #	install -d $(LATEXLOC)/tex/latex/base
 	install -d $(LATEXLOC)/tex/latex/$(CLASS)
-	install -d $(LOCALDOC)/$(CLASS)
+	install -d $(LOCALDOC)/latex/$(CLASS)
 	install -p $(PACKAGEFILES) $(LATEXLOC)/tex/latex/$(CLASS)
 #	install -p $(FONTFILES) $(LATEXLOC)/tex/latex/base
-	install -p $(DOCFILES) $(LOCALDOC)/$(CLASS)
+	install -p $(DOCFILES) $(LOCALDOC)/latex/$(CLASS)
 	texhash
 
 .PHONY: uninstall
